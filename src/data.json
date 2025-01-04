@@ -1,0 +1,54 @@
+{
+  "boards": [
+    {
+      "name":"Company creation",
+      "isActive" : false,
+      "columns": [
+        {
+          "name": "Todo",
+          "tasks": [
+            {
+              "title": "Homepage Copy",
+              "description": "create a copy of homepage",
+              "status": "Todo"
+             
+            }
+           
+          ]
+        },
+        {
+          "name": "In Progress",
+          "tasks": [
+            {
+              "title": "Create Banner Ad",
+              "description": "Add copy and pic",
+              "status": "In Progress"
+              
+            },
+            {
+              "title": "Branded Colors",
+              "description": "Follow style-guide",
+              "status": "In Progress"
+             
+            }
+           
+          ]
+        },
+        {
+          "name": "Done",
+          "tasks": [
+            {
+              "title": "Test UI",
+              "description": "Meet expectations",
+              "status": "Done"
+              
+            }
+           
+            
+          ]
+        }
+      ]
+    }
+   
+  ]
+}
