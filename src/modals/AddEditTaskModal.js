@@ -239,6 +239,7 @@ import { v4 as uuidv4 } from "uuid";
 import crossIcon from "../assets/icon-cross.svg";
 import boardsSlice from "../redux/boardsSlice";
 
+
 function AddEditTaskModal({
   type,
   device,
@@ -252,6 +253,8 @@ function AddEditTaskModal({
   const [isValid, setIsValid] = useState(true);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [assignee,setAssignee] = useState("")
+  const [dueDate,setDueDate] = useState("")
   const board = useSelector((state) => state.boards).find(
     (board) => board.isActive
   );
@@ -302,6 +305,8 @@ function AddEditTaskModal({
     // );
     setTitle(task.title);
     setDescription(task.description);
+    setAssignee(task.assignee);
+    setDueDate(task.dueDate);
     setIsFirstLoad(false);
   }
 
@@ -316,6 +321,8 @@ function AddEditTaskModal({
           title,
           description,
          // subtasks,
+          assignee,
+          dueDate,
           status,
           newColIndex,
         })
@@ -326,6 +333,8 @@ function AddEditTaskModal({
           title,
           description,
           //subtasks,
+          assignee,
+          dueDate,
           status,
           taskIndex,
           prevColIndex,
@@ -384,51 +393,41 @@ function AddEditTaskModal({
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             id="task-description-input"
-            className=" bg-transparent outline-none min-h-[200px] focus:border-0 px-4 py-2 rounded-md text-sm  border-[0.5px] border-gray-600 focus:outline-[#635fc7] outline-[1px] "
+            className=" bg-transparent outline-none min-h-[80px] focus:border-0 px-4 py-2 rounded-md text-sm  border-[0.5px] border-gray-600 focus:outline-[#635fc7] outline-[1px] "
             placeholder="Enter your description"
           />
         </div>
 
-        {/* Subtasks */}
-
-        {/* <div className="mt-8 flex flex-col space-y-3">
+        <div className="mt-5 flex flex-col space-y-1">
           <label className="  text-sm dark:text-white text-gray-500">
-            Subtasks
+            Assignee
           </label>
+          <input
+            value={assignee}
+            onChange={(e) => setAssignee(e.target.value)}
+            id="task-name-input"
+            type="text"
+            className=" bg-transparent  px-4 py-2 outline-none focus:border-0 rounded-md text-sm  border-[0.5px] border-gray-600 focus:outline-[#635fc7] outline-1  ring-0  "
+            placeholder="Enter Assignee Name"
+          />
+        </div>
 
-          {subtasks.map((subtask, index) => (
-            <div key={index} className=" flex items-center w-full ">
-              <input
-                onChange={(e) => {
-                  onChangeSubtasks(subtask.id, e.target.value);
-                }}
-                type="text"
-                value={subtask.title}
-                className=" bg-transparent outline-none focus:border-0 flex-grow px-4 py-2 rounded-md text-sm  border-[0.5px] border-gray-600 focus:outline-[#635fc7] outline-[1px]  "
-                placeholder=" e.g Take coffee break"
-              />
-              <img
-                src={crossIcon}
-                onClick={() => {
-                  onDelete(subtask.id);
-                }}
-                className=" m-4 cursor-pointer "
-              />
-            </div>
-          ))}
+        <div className="mt-5 flex flex-col space-y-1">
+  <label className="text-sm dark:text-white text-gray-500">
+    Due-Date
+  </label>
+  <input
+    value={dueDate}
+    onChange={(e) => setDueDate(e.target.value)}
+    id="task-name-input"
+    type="date"
+    className="bg-transparent px-4 py-2 outline-none focus:border-0 rounded-md text-sm border-[0.5px] border-gray-600 focus:outline-[#635fc7] outline-1 ring-0"
+    placeholder="Enter due-date"
+    min={new Date().toISOString().split("T")[0]} // Set the minimum date to today
+  />
+</div>
 
-          <button
-            className=" w-full items-center dark:text-[#635fc7] dark:bg-white  text-white bg-[#635fc7] py-2 rounded-full "
-            onClick={() => {
-              setSubtasks((state) => [
-                ...state,
-                { title: "", isCompleted: false, id: uuidv4() },
-              ]);
-            }}
-          >
-            + Add New Subtask
-          </button>
-        </div> */}
+
 
         {/* current Status  */}
         <div className="mt-8 flex flex-col space-y-3">

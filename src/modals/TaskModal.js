@@ -97,26 +97,16 @@ function TaskModal({ taskIndex, colIndex, setIsTaskModalOpen }) {
           )}
         </div>
         <p className=" text-gray-500 font-[600] tracking-wide text-xs pt-6">
-          {task.description}
+          Description : {task.description}
+        </p>
+        <p className=" text-gray-500 font-[600] tracking-wide text-xs pt-6">
+          Assignee-to : {task.assignee}
+        </p>
+        <p className=" text-gray-500 font-[600] tracking-wide text-xs pt-6">
+          Due-Date : {task.dueDate}
         </p>
 
-        {/* <p className=" pt-6 text-gray-500 tracking-widest text-sm">
-          Subtasks ({completed} of {subtasks.length})
-        </p> */}
-
-        {/* <div className=" mt-3 space-y-2">
-          {subtasks.map((subtask, index) => {
-            return (
-              <Subtask
-                index={index}
-                taskIndex={taskIndex}
-                colIndex={colIndex}
-                key={index}
-              />
-            );
-          })}
-        </div> */}
-
+      
        
 
         <div className="mt-8 flex flex-col space-y-3">
